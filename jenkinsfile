@@ -1,0 +1,43 @@
+pipeline {
+  agent any
+  stages {
+    stage('commit') {
+      steps {
+        echo 'build'
+      }
+    }
+    stage('Build') {
+      steps {
+        parallel(
+          "Build": {
+            sleep 1
+            
+          },
+          "Build in parallel": {
+            echo 'building...'
+            
+          }
+        )
+      }
+    }
+    stage('Approve') {
+      steps {
+        input 'deploy to staging?'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        parallel(
+          "Deploy": {
+            echo 'deployment done'
+            
+          },
+          "Read Cfg": {
+            readJSON(file: './deployment_parameters__azure_accountsmassprinting.json')
+            
+          }
+        )
+      }
+    }
+  }
+}
