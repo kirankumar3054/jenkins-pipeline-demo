@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Approval') {
       steps {
-        input 'deploy to staging?'
+        input 'Proceed for E2E tests?'
       }
     }
     stage('E2E Cross Browser Tests in Saucelabs') {
@@ -45,6 +45,11 @@ pipeline {
             echo 'Small_QA_Iphone Tests Completed successfully'
            },
            )
+      }
+    }
+    stage('DEPLOY') {
+      steps {
+        echo 'Deployment successful.'
       }
     }
   }
