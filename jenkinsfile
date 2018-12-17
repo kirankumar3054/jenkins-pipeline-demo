@@ -1,33 +1,32 @@
 pipeline {
   agent any
   stages {
-    stage('commit') {
+    stage('COMMIT') {
       steps {
         echo 'build'
       }
     }
-    stage('Build') {
+    stage('BUILD') {
       steps {
         parallel(
           "Build": {
             sleep 1
-            
           },
           "Build in parallel-Component1": {
-            echo 'building Component1...'
+            echo 'building Component1... successful'
           },
           "Build in parallel-Component2": {
-            echo 'building Component2...'
+            echo 'building Component2...successful'
           }
         )
       }
     }
-    stage('Approve') {
+    stage('Approval') {
       steps {
         input 'deploy to staging?'
       }
     }
-    stage('E2E Cross Browser Tests') {
+    stage('E2E Cross Browser Tests in Saucelabs') {
       steps {
         parallel(
           "PC_QA_CHROME": {
