@@ -15,7 +15,7 @@ pipeline {
           },
           "Build in parallel-Component1": {
             echo 'building Component1...'
-          }
+          },
           "Build in parallel-Component2": {
             echo 'building Component2...'
           }
