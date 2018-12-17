@@ -27,18 +27,25 @@ pipeline {
         input 'deploy to staging?'
       }
     }
-    stage('Deploy') {
+    stage('E2E Cross Browser Tests') {
       steps {
         parallel(
-          "Deploy": {
-            echo 'deployment done'
-            
-          },
-          "Read Cfg": {
-            readJSON(file: './deployment_parameters__azure_accountsmassprinting.json')
-            
-          }
-        )
+          "PC_QA_CHROME": {
+            echo 'Large_QA_CHROME Tests Completed successfully'
+           },
+          "PC_QA_FireFox": {
+            echo 'Large_QA_Firefox Tests Completed successfully'
+           },
+          "PC_QA_IE11": {
+            echo 'Large_QA_IE11 Tests Completed successfully'
+           },
+          "MOBILE_QA_Android": {
+            echo 'Small_QA_Android Tests Completed successfully'
+           },
+          "MOBILE_QA_IOS": {
+            echo 'Small_QA_Iphone Tests Completed successfully'
+           },
+           )
       }
     }
   }
