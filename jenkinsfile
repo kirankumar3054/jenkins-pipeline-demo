@@ -48,6 +48,7 @@ pipeline {
            )
          }catch (Exception e) {
           error("Exception occured.  Seems one or more of parallel tests failed at this stage.")
+          }
       }
     }
     stage('DEPLOY') {
