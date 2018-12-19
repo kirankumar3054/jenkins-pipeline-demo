@@ -28,7 +28,7 @@ pipeline {
     }
     stage('E2E Cross Browser Tests in Saucelabs') {
       steps {
-      try{
+      try {
         parallel(
           "PC_QA_CHROME": {
             echo 'Large_QA_CHROME Tests Completed successfully'
@@ -46,7 +46,7 @@ pipeline {
             echo 'Small_QA_Iphone Tests Completed successfully'
            },
            )
-           } catch (Exception e) { error("Something went wrong...") }
+           } catch (Exception e) { error("Opss..Something went wrong...") }
          }
     }
     stage('DEPLOY') {
