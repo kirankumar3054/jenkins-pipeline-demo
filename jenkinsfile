@@ -27,7 +27,6 @@ pipeline {
       }
     }
     stage('E2E Cross Browser Tests in Saucelabs') {
-      try{
       steps {
         parallel(
           "PC_QA_CHROME": {
@@ -47,9 +46,6 @@ pipeline {
            },
            )
          }
-         }catch (Exception e) {
-          error("Exception occured.  Seems one or more of parallel tests failed at this stage.")
-          }
     }
     stage('DEPLOY') {
       steps {
