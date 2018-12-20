@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('SCM checkout') {
       steps {
-        echo 'build'
+        git credentialsId: '2be133c7-17b3-4a8b-bc8d-7a2adcbe9b09', url: 'https://github.com/kirankumar3054/jenkins-pipeline-demo'
+        echo 'Commit successful....'
       }
     }
     stage('BUILD') {
