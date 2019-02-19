@@ -4,7 +4,7 @@ pipeline {
     stage('SCM checkout') {
       steps {
         git 'https://github.com/kirankumar3054/jenkins-pipeline-demo'
-        echo 'Commited successfully...'
+        echo 'Commited successfully...CSM Poll'
       }
     }
     stage('BUILD') {
